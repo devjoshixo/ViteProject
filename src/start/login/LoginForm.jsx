@@ -13,12 +13,9 @@ const LoginForm = () => {
   });
 
   //State for error message pop up
-  const [errormessage, setErrorMessage] = useState({
-    name: true,
-    email: true,
-    number: true,
-    isFirst: true,
-  });
+  const [errormessage, setErrorMessage] = useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
+
   const ctx = useContext(LoginContext);
 
   useEffect(() => {
@@ -37,50 +34,15 @@ const LoginForm = () => {
     });
   };
 
-  //Set error status of the required field
-  const setErrorStatus = (name, value) => {
-    setErrorMessage((prevState) => {
-      return { ...prevState, [name]: value };
-    });
-  };
-
-  //Phone number checker
-  const res = /^\+?\d+$/;
-
   const formSubmitHandler = (event) => {
     event.preventDefault();
 
-    //Error message would not pop up until submit is clicked once
-    if (errormessage.isFirst) {
-      setErrorStatus('isFirst', false);
-    }
+    setErrorMessage(validate(formDetails));
+    setIsSubmit(true);
+  };
 
-    //Form Validation Checkers
-    if (formDetails.name == '') {
-      setErrorStatus('name', false);
-    } else {
-      setErrorStatus('name', true);
-    }
-    if (formDetails.email == '') {
-      setErrorStatus('email', false);
-    } else {
-      setErrorStatus('email', true);
-    }
-    if (formDetails.number == '' || !res.test(formDetails.number)) {
-      setErrorStatus('number', false);
-    } else {
-      if (formDetails.number.length > 9) {
-        setErrorStatus('number', true);
-      }
-    }
-
-    //Clear the state, save the data into local storage and redirect to next page
-    if (
-      errormessage.name &&
-      errormessage.email &&
-      errormessage.number &&
-      !errormessage.isFirst
-    ) {
+  useEffect(() => {
+    if (Object.keys(errormessage).length === 0 && isSubmit) {
       //Push Item to localStorage
       localStorage.setItem('userData', JSON.stringify({ formDetails }));
 
@@ -93,6 +55,20 @@ const LoginForm = () => {
       //Redirect to the Next Page
       navigate.push('/next-page');
     }
+  }, [ctx, errormessage, formDetails, isSubmit, navigate]);
+
+  const validate = (values) => {
+    const errors = {};
+    if (!values.name) {
+      errors.name = 'Name is required';
+    }
+    if (!values.email) {
+      errors.email = 'Email is required';
+    }
+    if (!values.number) {
+      errors.number = 'Phone Number is required';
+    }
+    return errors;
   };
 
   return (
@@ -109,22 +85,22 @@ const LoginForm = () => {
             value={formDetails.name}
             onChange={inputHandler}
           ></input>
-          {!errormessage.name && !errormessage.isFirst && (
-            <p className={classes.errorMessage}>This field cannot be empty</p>
-          )}
+          <p className={classes.errorMessage}>{errormessage.name}</p>
         </div>
+
         <div className={classes.forminput}>
           <label htmlFor=''>Phone Number</label>
           <input
             type='text'
+            maxLength='10'
+            pattern='\d{10}'
             name='number'
             value={formDetails.number}
             onChange={inputHandler}
           ></input>
-          {!errormessage.number && !errormessage.isFirst && (
-            <p className={classes.errorMessage}>Enter valid Phone number</p>
-          )}
+          <p className={classes.errorMessage}>{errormessage.number}</p>
         </div>
+
         <div className={classes.forminput}>
           <label htmlFor=''>Email</label>
           <input
@@ -133,9 +109,7 @@ const LoginForm = () => {
             value={formDetails.email}
             onChange={inputHandler}
           ></input>
-          {!errormessage.email && !errormessage.isFirst && (
-            <p className={classes.errorMessage}>This field cannot be empty</p>
-          )}
+          <p className={classes.errorMessage}>{errormessage.email}</p>
         </div>
         <div className={classes.actionButton}>
           <button className={classes.button}>Submit</button>
