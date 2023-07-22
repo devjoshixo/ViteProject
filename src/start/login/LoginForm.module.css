@@ -1,0 +1,64 @@
+.box {
+  display: flex;
+  flex-flow: column-reverse wrap;
+  justify-content: center;
+  height: 30rem;
+  width: 65rem;
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
+  border: 1px solid rgb(215, 215, 215);
+  margin: 5rem auto 1rem auto;
+}
+
+.loginImage {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  width: 30rem;
+  height: 30rem;
+  border-right: 2px solid rgba(174, 174, 174, 0.158);
+}
+
+.form h1 {
+  margin-bottom: 2rem;
+}
+
+.forminput {
+  display: flex;
+  flex-flow: column wrap;
+  margin: 1.3rem 0 1rem 0;
+}
+
+.forminput label {
+  font-size: 1.3rem;
+  font-weight: 800;
+  font-family: Calibri;
+  margin-bottom: 0.4rem;
+  color: rgb(32, 32, 32);
+}
+
+.forminput input {
+  width: 25rem;
+  font-weight: light;
+  font-family: Arial, Helvetica, sans-serif;
+  padding-left: 0.5rem;
+  color: rgba(23, 23, 23, 0.819);
+  border: 0.4px solid rgb(227, 227, 227);
+  height: 2rem;
+}
+
+.actionButton button {
+  height: 2.8rem;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-family: sans-serif;
+  font-weight: 600;
+  width: 26rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #0062d1;
+  color: white;
+}
+
+.actionButton button:hover {
+  background-color: #2874cc;
+}
