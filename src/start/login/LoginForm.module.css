@@ -62,3 +62,9 @@
 .actionButton button:hover {
   background-color: #2874cc;
 }
+
+.errorMessage {
+  margin-top: 0rem;
+  font-size: 0.8rem;
+  color: red;
+}
