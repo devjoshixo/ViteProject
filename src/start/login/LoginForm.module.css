@@ -25,7 +25,7 @@
 .forminput {
   display: flex;
   flex-flow: column wrap;
-  margin: 1.3rem 0 1rem 0;
+  margin: 1rem 0 0rem 0;
 }
 
 .forminput label {
@@ -46,7 +46,7 @@
   height: 2rem;
 }
 
-.actionButton button {
+.button {
   height: 2.8rem;
   justify-content: center;
   font-size: 1.2rem;
@@ -54,17 +54,32 @@
   font-weight: 600;
   width: 26rem;
   border: none;
+  margin-top: 1.2rem;
   border-radius: 10px;
   background-color: #0062d1;
   color: white;
 }
 
-.actionButton button:hover {
+.button:hover {
   background-color: #2874cc;
 }
 
+.button:active:after {
+  box-shadow: 0 0 0 0 rgb(3, 3, 3);
+  position: absolute;
+  border-radius: 4em;
+  left: 0;
+  top: 0;
+  opacity: 1;
+  transition: 0s;
+}
+
+.button:active {
+  top: 1px;
+}
+
 .errorMessage {
-  margin-top: 0rem;
+  margin: 0 0 -1.1rem 0;
   font-size: 0.8rem;
   color: red;
 }
