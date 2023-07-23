@@ -1,0 +1,20 @@
+.outer {
+  background-color: white;
+  height: 402px;
+  border-radius: 10px;
+  box-shadow: 10px beige;
+  /* border: 1px solid rgba(49, 49, 49, 0.444); */
+}
+
+.box {
+  /* color: white; */
+  border: 1px solid rgba(49, 49, 49, 0.444);
+  /* background-color: rgba(47, 105, 142, 0.418); */
+  border-radius: 15px;
+  color: white;
+}
+
+.MultiDataGrid-row {
+  border: none;
+  color: white;
+}

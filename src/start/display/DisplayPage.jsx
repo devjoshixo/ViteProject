@@ -1,5 +1,13 @@
+import Department from './Department';
+import GridData from './GridData';
+
 const DisplayPage = () => {
-  return <h1>Display Page</h1>;
+  return (
+    <div>
+      <GridData />
+      <Department />
+    </div>
+  );
 };
 
 export default DisplayPage;
