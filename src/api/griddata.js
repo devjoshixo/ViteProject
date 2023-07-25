@@ -1,5 +1,6 @@
 const griddata = async () => {
-  const result = await fetch('https://jsonplaceholder.typicode.com/posts');
+  const url = import.meta.env.VITE_REACT_APP_MY_API;
+  const result = await fetch(url);
   const data = await result.json();
   return data;
 };
