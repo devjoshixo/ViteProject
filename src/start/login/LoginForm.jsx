@@ -1,8 +1,10 @@
+/* eslint-disable react/jsx-key */
 import classes from './LoginForm.module.css';
 import { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import loginImage from '../../assets/4957136.jpg';
 import LoginContext from '../../context/Login/LoginContext';
+import codes from '../../data/code';
 
 const LoginForm = () => {
   //User data state for the log in form
@@ -10,6 +12,7 @@ const LoginForm = () => {
     name: '',
     email: '',
     number: '',
+    code: '+91',
   });
 
   //State for error message pop up
@@ -90,6 +93,21 @@ const LoginForm = () => {
 
         <div className={classes.forminput}>
           <label htmlFor=''>Phone Number</label>
+          <select
+            name='code'
+            className={classes.selectors}
+            onChange={inputHandler}
+            id='codes'
+            required
+          >
+            {codes.map((code) => {
+              return (
+                <option value={code.dial_code}>
+                  {code.name} ({code.dial_code})
+                </option>
+              );
+            })}
+          </select>
           <input
             type='text'
             maxLength='10'

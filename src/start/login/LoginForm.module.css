@@ -46,6 +46,12 @@
   height: 2rem;
 }
 
+.selectors {
+  background-color: white;
+  border: 1px solid rgba(148, 148, 148, 0.237);
+  width: 8rem;
+}
+
 .button {
   height: 2.8rem;
   justify-content: center;
