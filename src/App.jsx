@@ -13,7 +13,7 @@ function App() {
       <Route path='/' exact>
         <LoginPage />
       </Route>
-      <Route path='/next-page' exact>
+      <Route path='/next-page'>
         {ctx.loggedIn ? <SecondPage /> : <Redirect to='/' />}
       </Route>
     </Switch>
