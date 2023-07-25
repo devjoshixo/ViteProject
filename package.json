@@ -15,7 +15,8 @@
     "@mui/x-data-grid": "^6.10.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^5.3.4"
+    "react-router-dom": "^5.3.4",
+    "shortid": "^2.2.16"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
