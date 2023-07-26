@@ -37,21 +37,23 @@ const Options = (props) => {
           return dep;
         }
       });
-      console.log();
       SetDepartmentList(temp_dep);
     }
   };
 
   useEffect(() => {
-    let counter = false;
-    departmentList.map((dep) => (dep.isChecked ? (counter = true) : ''));
-
-    if (counter) {
+    let counter = 0;
+    departmentList.map((dep) => {
+      if (dep.isChecked) {
+        counter += 1;
+      }
+    });
+    if (counter >= departmentList.length) {
       headInputRef.current.checked = true;
     } else {
       headInputRef.current.checked = false;
     }
-  }, [departmentList, headInputRef]);
+  }, [departmentList, headInputRef, props.department]);
 
   return (
     <>
