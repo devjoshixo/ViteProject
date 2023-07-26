@@ -9,14 +9,22 @@ import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 function App() {
   const ctx = useContext(LoginContext);
+
+  const nextPage = () => {
+    if (ctx.loggedIn) {
+      return <SecondPage />;
+    } else {
+      ctx.toggleErrorPop(true);
+      return <Redirect to='/' />;
+    }
+  };
+
   return (
     <Switch>
       <Route path='/' exact>
         <LoginPage />
       </Route>
-      <Route path='/next-page'>
-        {ctx.loggedIn ? <SecondPage /> : <Redirect to='/' />}
-      </Route>
+      <Route path='/next-page'>{nextPage}</Route>
       <Route path='*'>
         <ErrorPage />
       </Route>

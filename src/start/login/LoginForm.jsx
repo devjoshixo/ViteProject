@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import loginImage from '../../assets/4957136.jpg';
 import LoginContext from '../../context/Login/LoginContext';
 import codes from '../../data/code';
+import ErrorPopUp from '../../UI/ErrorPopUp';
 
 const LoginForm = () => {
   //User data state for the log in form
@@ -76,8 +77,8 @@ const LoginForm = () => {
 
   return (
     <div className={classes.box}>
+      {ctx.errorPop ? <ErrorPopUp /> : ''}
       <img src={loginImage} className={classes.loginImage} />
-
       <form onSubmit={formSubmitHandler}>
         <h1>Login</h1>
         <div className={classes.forminput}>
